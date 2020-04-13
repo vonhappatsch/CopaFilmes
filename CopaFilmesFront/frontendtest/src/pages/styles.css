@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&family=Roboto:wght@100;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(168, 168, 168);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85vw;
+}
+
+.selected-movies {
+    color: rgb(245, 245, 245);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    line-height: 3.5vh;
+    margin-left: 0.5vw;
+}
+
+.button {
+    background-color: rgb(52, 52, 52);
+    color: rgb(245, 245, 245);
+    border: none;
+    margin-right: 0.5vw;
+    padding: 3vh 2vw 3vh 2vw;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:disabled {
+    cursor: default;
+}
+
+.movies-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 85vw;
+    margin: 3vh 0vw 3vh 0vw;
+}
+
+.movie-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-end;
+
+}
+
+.movie-card {
+    display: flex;
+    flex: 1 0 23%;
+    width: 20vw;
+    height: 12vh;
+    margin: 1vh;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+}
+
+.movie-choice {
+    margin: 0vh 0vw 0vh 2vw;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.movie-title {
+    margin: 1vh 0vw 1vh 1vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 700;
+    
+}
+
+.movie-year {
+    margin: 0vh 0vw 1vh 1vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    font-weight: 400;
+    color: rgb(168, 168, 168);
+}

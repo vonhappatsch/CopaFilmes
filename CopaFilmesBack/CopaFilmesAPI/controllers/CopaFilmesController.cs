@@ -35,13 +35,19 @@ namespace CopaFilmesAPI.Controllers
         [HttpPost]
         [Route("/api/championship")]
         public IActionResult FinalRound([FromBody] List<Competitors> competitors)
-        {
-            List<Competitors> moviesToMatch = competitors;
-            _movieMatch.FirstRound(moviesToMatch);
-            _movieMatch.SecondRound(moviesToMatch);
-            var final = _movieMatch.FinalRound(moviesToMatch);
+        { 
+            try
+            {
+                List<Competitors> moviesToMatch = competitors;
+                var result = _movieMatch.Match(moviesToMatch);
 
-            return Ok(final);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return BadRequest("Infelizmente não pudemos realizar o campeonato.");
+            }
         }
     }
 }

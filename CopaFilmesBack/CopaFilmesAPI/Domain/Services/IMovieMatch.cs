@@ -8,10 +8,6 @@ namespace CopaFilmesAPI.Domain.Services
 {
     public interface IMovieMatch
     {
-        List<Competitors> FirstRound(List<Competitors> movies);
-
-        List<Competitors> SecondRound(List<Competitors> movies);
-
-        List<Competitors> FinalRound(List<Competitors> movies);
+        List<Competitors> Match(List<Competitors> competitors);
     }
 }

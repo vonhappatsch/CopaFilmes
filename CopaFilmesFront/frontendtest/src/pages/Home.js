@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Header from '../components/Header';
+import Info from '../components/Info';
 import './styles.css';
 
 
@@ -96,19 +97,10 @@ export default function Home() {
         depois pressione o botão Gerar Meu Campeonato para prosseguir."
       />
 
-      <section className="info-section">
-        <div>
-          <p className="selected-movies">Selecionados</p>
-          <p className="selected-movies">{count} de 8 filmes</p>
-        </div>
-
-        <button type="submit" className="button"
-          disabled={disabled}
-          onClick={() => sendToFinal()}
-        >
-          Gerar Meu Campeonato
-        </button>
-      </section>
+      <Info className="info-section"
+        count={count} disabled={disabled}
+        onClick={() => sendToFinal()}>
+      </Info>
 
       <section className="movies-section">
         <form className="movie-form">

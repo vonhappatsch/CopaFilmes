@@ -97,18 +97,19 @@ export default function Home() {
         depois pressione o botão Gerar Meu Campeonato para prosseguir."
       />
 
-      <Info className="info-section"
+      <Info className="info"
+        counterClassName="selected"
         count={count} disabled={disabled}
         onClick={() => sendToFinal()}>
       </Info>
 
-      <section className="movies-section">
-        <form className="movie-form">
+      <section className="movies">
+        <form className="movies__form">
           {
             movies.map(movie =>
-              <label className="movie-card" key={movie.id}>
+              <label className="movie" key={movie.id}>
                 <input type="checkbox"
-                  className="movie-choice"
+                  className="movie__choice"
                   checked={movie.checked}
                   value={movie.nota}
                   onChange={(e) => {
@@ -129,16 +130,15 @@ export default function Home() {
                     }))
                   }}
                 />
-                <div className="movie-info">
-                  <p className="movie-title">{movie.titulo}</p>
-                  <p className="movie-year">{movie.ano}</p>
+                <div className="movie__info">
+                  <p className="movie__title">{movie.titulo}</p>
+                  <p className="movie__year">{movie.ano}</p>
                 </div>
               </label>
             )
           }
         </form>
       </section>
-
     </main>
   );
 }

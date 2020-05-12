@@ -55,37 +55,3 @@
     word-break: break-word;
     text-align: center;
 }
-
-.result-wrapper {
-    width: 84vw;
-}
-
-.result {
-    display: flex;
-    align-items: center;
-    margin: 3vh 0vw 0vh 0vw;
-
-    background-color: rgb(245, 245, 245);
-}   
-
-.result-position {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 6.5vw;
-    height: 17vh;
-
-    font-family: 'Roboto Slab', serif;
-    font-size: 6vh;
-    font-weight: 400;
-    background-color: rgb(110, 110, 110);
-    color: rgb(245, 245, 245);
-
-}
-
-.result-title {
-    padding-left: 2vw;
-    font-family: 'Roboto', sans-serif;
-    font-size: 3vh;
-}

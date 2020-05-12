@@ -14,17 +14,17 @@ export default function Final() {
       />
 
     
-      <div className="result-wrapper">
+      <div className="wrapper-result">
         <div className="result">
-          <p className="result-position">1º</p>
-          <p className="result-title">{result[0].titulo}</p>
+          <p className="result__position">1º</p>
+          <p className="result__title">{result[0].titulo}</p>
         </div>
       </div>
 
-      <div className="result-wrapper">
+      <div className="wrapper-result">
         <div className="result">
-          <p className="result-position">2º</p>
-          <p className="result-title">{result[1].titulo}</p>
+          <p className="result__position">2º</p>
+          <p className="result__title">{result[1].titulo}</p>
         </div>
       </div>
     </div>  

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function(props) {
+export default function SelectedMovies(props) {
   return (
     <div className={props.counterClassName}>
       <p>Selecionados</p>

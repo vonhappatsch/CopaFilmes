@@ -1,144 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 
 import Header from '../components/Header';
-import Info from '../components/Info';
+import Movies from '../components/Movies';
 import './styles.css';
 
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default function Home() {
-  const [movies, setMovies] = useState([]);
-  const [disabled, setDisabled] = useState(true);
-  const [count, setCount] = useState(0);
-  const [options, setOptions] = useState([]);
+    this.state = {
+      movies: []
+    }
+  }
 
-  const history = useHistory();
-
-
-  useEffect(() => {
-
+  componentDidMount() {
     fetch('http://localhost:5000/api/allmovies')
       .then(response => response.json())
-      .then(setMovies)
-      .catch(err => {
-        console.log(err);
-      });
-
-    setMovies(
-      movies.map(movie => {
-        return {
-          select: false,
-          id: movie.id,
-          titulo: movie.titulo,
-          ano: movie.ano,
-          nota: movie.nota
-        };
-      })
-    );
-  }, []);
-
-  const handleButton = (count) => {
-    if (count === 7) {
-      setDisabled(false)
-    } else {
-      setDisabled(true)
-    }
-  };
-
-  const handleCount = (checked) => {
-    if (checked) {
-      setCount(count + 1);
-    } else {
-      setCount(count - 1);
-    }
-  };
-
-  const removeMovie = (titulo, nota) => {
-    setOptions(options => options.filter(item => item.titulo !== titulo && item.nota !== nota));
-  };
-
-  const handleMovieList = (checked, e, movie) => {
-    let titulo = movie.titulo;
-    let nota = e.target.value;
-    if (checked) {
-      options.push({ "titulo": movie.titulo, "nota": e.target.value });
-    } else {
-      removeMovie(titulo, nota);
-    }
-  };
-
-  const sendToFinal = () => {
-    fetch('http://localhost:5000/api/championship', {
-      method: 'POST',
-      cache: 'no-cache',
-      headers: {
-        "Content-Type": "application/json;charset=utf-8"
-      },
-      body: JSON.stringify(options),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        sessionStorage.setItem('championshipResult', JSON.stringify(data));
+      .then(data => {
+        this.setState({ movies: data });
       })
       .catch(err => {
-        console.log(err);
+        console.log(`Infelizmente não deu para chamar a API, pois: ${err}`);
       });
+  }
 
-    history.push('/final');
-    window.location.reload();
-  };
-
-  return (
-    <main className="wrapper">
-      <Header title="Fase de Seleção"
-        description="Selecione 8 filmes que você deseja que entrem na competição e 
+  render() {
+    return (
+      <main className="wrapper">
+        <Header title="Fase de Seleção"
+          description="Selecione 8 filmes que você deseja que entrem na competição e 
         depois pressione o botão Gerar Meu Campeonato para prosseguir."
-      />
+        />
 
-      <Info className="info"
-        counterClassName="selected"
-        count={count} disabled={disabled}
-        onClick={() => sendToFinal()}>
-      </Info>
-
-      <section className="movies">
-        <form className="movies__form">
-          {
-            movies.map(movie =>
-              <label className="movie" key={movie.id}>
-                <input type="checkbox"
-                  className="movie__choice"
-                  checked={movie.checked}
-                  value={movie.nota}
-                  onChange={(e) => {
-                    let checked = e.target.checked;
-
-                    handleCount(checked);
-
-                    handleMovieList(checked, e, movie);
-
-                    handleButton(count);
-
-                    setMovies(movies.map(movieData => {
-                      if (movie.id === movieData.id) {
-                        movieData.select = true;
-                      }
-
-                      return movieData;
-                    }))
-                  }}
-                />
-                <div className="movie__info">
-                  <p className="movie__title">{movie.titulo}</p>
-                  <p className="movie__year">{movie.ano}</p>
-                </div>
-              </label>
-            )
-          }
-        </form>
-      </section>
-    </main>
-  );
+        <Movies
+          movies={this.state.movies}
+        />
+      </main>
+    );
+  }
 }

@@ -65,7 +65,7 @@ body {
     font-size: 3vh;
 }
 
-.button {
+.button:disabled {
     background-color: rgb(52, 52, 52);
     color: rgb(245, 245, 245);
     border: none;
@@ -76,11 +76,22 @@ body {
     font-size: 2vh;
     font-weight: 700;
     text-decoration: none;
-    cursor: pointer;
+    cursor: default;
 }
 
-.button:disabled {
-    cursor: default;
+.button {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245);
+    color: rgb(52, 52, 52);
+    border: none;
+    margin-right: 0.5vw;
+    padding: 3vh 2vw 3vh 2vw;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .movies {
